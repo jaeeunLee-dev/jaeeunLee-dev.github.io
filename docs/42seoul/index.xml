@@ -1,0 +1,43 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jaeeun Lee – 42Seoul</title>
+    <link>/docs/42seoul/</link>
+    <description>Recent content in 42Seoul on Jaeeun Lee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/docs/42seoul/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: C Piscine</title>
+      <link>/docs/42seoul/c-piscine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/42seoul/c-piscine/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 42curus</title>
+      <link>/docs/42seoul/42cursus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/42seoul/42cursus/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
