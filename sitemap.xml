@@ -11,6 +11,10 @@
   </url>
   
   <url>
+    <loc>/search/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
   </url>
   
