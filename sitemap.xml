@@ -8,17 +8,22 @@
   </url>
   
   <url>
+    <loc>/docs/linux/%EC%A0%95%EC%A0%81%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/</loc>
+    <lastmod>2020-11-05T22:25:46+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/linux/makefile/</loc>
+    <lastmod>2020-11-05T22:25:46+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/</loc>
     <lastmod>2020-11-05T22:25:46+09:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-11-05T22:25:46+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/docs/linux/makefile/</loc>
     <lastmod>2020-11-05T22:25:46+09:00</lastmod>
   </url>
   

@@ -21,32 +21,38 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Makefile | Jaeeun Lee</title><meta property="og:title" content="Makefile" />
-<meta property="og:description" content="[정의]
-linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일
+<meta property="og:description" content="[정의] linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일
 Makefile을 통하여 library 및 컴파일 환경을 관리 가능
-프로젝트 실행파일 생성 방법(정적 라이브러리) 1. C source를 컴파일 하여 object 파일을 만들기 gcc -c -Werror -Wall -Wextra *.c -c : 어셈블 까지만 수행하고, 링크 수행 안함. 2. object 몇 개를 묶어서 링크(Link) ar -cr [아카이브명] *.o ar : 아카이브 생성 옵션 -c : 아카이브 파일이 존재하지 않아도 경고 메세지 출력 안함." />
+[기본구조] &lt;Target&gt; : &lt;Depend&gt; ?... [ [;] &lt;Command&gt; ] &lt;TAB&gt; &lt;Command&gt; Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)
+Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)
+Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
+[변수] CC : 컴파일러" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/linux/makefile/" />
 <meta property="article:published_time" content="2020-11-05T22:25:46+09:00" />
 <meta property="article:modified_time" content="2020-11-05T22:25:46+09:00" /><meta property="og:site_name" content="Jaeeun Lee" />
 <meta itemprop="name" content="Makefile">
-<meta itemprop="description" content="[정의]
-linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일
+<meta itemprop="description" content="[정의] linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일
 Makefile을 통하여 library 및 컴파일 환경을 관리 가능
-프로젝트 실행파일 생성 방법(정적 라이브러리) 1. C source를 컴파일 하여 object 파일을 만들기 gcc -c -Werror -Wall -Wextra *.c -c : 어셈블 까지만 수행하고, 링크 수행 안함. 2. object 몇 개를 묶어서 링크(Link) ar -cr [아카이브명] *.o ar : 아카이브 생성 옵션 -c : 아카이브 파일이 존재하지 않아도 경고 메세지 출력 안함.">
+[기본구조] &lt;Target&gt; : &lt;Depend&gt; ?... [ [;] &lt;Command&gt; ] &lt;TAB&gt; &lt;Command&gt; Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)
+Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)
+Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
+[변수] CC : 컴파일러">
 <meta itemprop="datePublished" content="2020-11-05T22:25:46+09:00" />
 <meta itemprop="dateModified" content="2020-11-05T22:25:46+09:00" />
-<meta itemprop="wordCount" content="206">
+<meta itemprop="wordCount" content="197">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Makefile"/>
-<meta name="twitter:description" content="[정의]
-linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일
+<meta name="twitter:description" content="[정의] linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일
 Makefile을 통하여 library 및 컴파일 환경을 관리 가능
-프로젝트 실행파일 생성 방법(정적 라이브러리) 1. C source를 컴파일 하여 object 파일을 만들기 gcc -c -Werror -Wall -Wextra *.c -c : 어셈블 까지만 수행하고, 링크 수행 안함. 2. object 몇 개를 묶어서 링크(Link) ar -cr [아카이브명] *.o ar : 아카이브 생성 옵션 -c : 아카이브 파일이 존재하지 않아도 경고 메세지 출력 안함."/>
+[기본구조] &lt;Target&gt; : &lt;Depend&gt; ?... [ [;] &lt;Command&gt; ] &lt;TAB&gt; &lt;Command&gt; Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)
+Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)
+Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
+[변수] CC : 컴파일러"/>
 
 
 
@@ -126,7 +132,7 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
   aria-label="사이트에서 검색…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.27e17485d931c3277f0304e22020986e.json"
+  data-offline-search-index-json-src="/offline-search-index.31443a5118c58124861716ed8cd769e7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +164,7 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
   aria-label="사이트에서 검색…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.27e17485d931c3277f0304e22020986e.json"
+  data-offline-search-index-json-src="/offline-search-index.31443a5118c58124861716ed8cd769e7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -201,6 +207,12 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
   <ul>
     <li class="collapse show" id="docslinux">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docslinuxeca095eca081eb9dbcec9db4ebb88ceb9faceba6ac" href="/docs/linux/%EC%A0%95%EC%A0%81%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/">정적라이브러리</a>
       
       
       
@@ -260,6 +272,21 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#정의"><strong>[정의]</strong></a></li>
+        <li><a href="#기본구조"><strong>[기본구조]</strong></a></li>
+        <li><a href="#변수"><strong>[변수]</strong></a></li>
+        <li><a href="#자동-변수"><strong>[자동 변수]</strong></a></li>
+        <li><a href="#문법"><strong>[문법]</strong></a></li>
+        <li><a href="#참고"><strong>[참고]</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -306,39 +333,36 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
 	<h1>Makefile</h1>
     
 	       
-	<p><strong>[정의]</strong></p>
+	<h3 id="정의"><strong>[정의]</strong></h3>
 <p>linux상에서 반복적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일</p>
 <p>Makefile을 통하여 library 및 컴파일 환경을 관리 가능</p>
-<pre><code>프로젝트 실행파일 생성 방법(정적 라이브러리)
-1. C source를 컴파일 하여 object 파일을 만들기
-    gcc -c -Werror -Wall -Wextra *.c 
-    -c : 어셈블 까지만 수행하고, 링크 수행 안함.
-2. object 몇 개를 묶어서 링크(Link)
-    ar -cr [아카이브명] *.o
-    ar : 아카이브 생성 옵션
-    -c : 아카이브 파일이 존재하지 않아도 경고 메세지 출력 안함.
-    -r : 새로운 오브젝트 파일이면 추가. 기존 파일이면 치환.
-</code></pre>
-<p><strong>[기본구조]</strong></p>
+<h3 id="기본구조"><strong>[기본구조]</strong></h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;Target&gt; : &lt;Depend&gt; ?... <span style="color:#f92672">[</span> <span style="color:#f92672">[</span>;<span style="color:#f92672">]</span> &lt;Command&gt; <span style="color:#f92672">]</span>
 		&lt;TAB&gt;  &lt;Command&gt;
 </code></pre></div><p>Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)</p>
 <p>Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)</p>
 <p>Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)</p>
-<p><strong>[변수]</strong></p>
+<h3 id="변수"><strong>[변수]</strong></h3>
 <p>CC : 컴파일러</p>
 <p>CFLAGS : 컴파일 옵션</p>
 <p>OBJS : 중간산물 / object 파일 목록</p>
 <p>TARGET : 빌드 대상(실행파일) 이름</p>
 <p>LDFLAGS : 링커 옵션</p>
 <p>LDLIBS : 링크 라이브러리</p>
-<p><strong>[자동 변수]</strong></p>
+<h3 id="자동-변수"><strong>[자동 변수]</strong></h3>
 <p>$@ : 현재 target 이름</p>
 <p>$^ :  현재 target이 의존하는 대상들의 전체목록</p>
 <p>$? : 현재 target이 의존하는 대상들 중 변경된 것들의 목록</p>
 <p>$&lt; : 현재의 target보다 더 최근에 갱신된 파일 이름 ($?와 비슷함)</p>
 <p>$% : 대상의 이름(현재 규칙 대상이 아카이브인 경우)</p>
-<p><strong>[참고]</strong></p>
+<h3 id="문법"><strong>[문법]</strong></h3>
+<p>$(addprefix [prefix], [names]&hellip;) : prefix의 값은 각 개별 이름의 앞에 붙고, 그들 사이에 단일 스페이스로 채워 연결된 커다란 이름을 만듦</p>
+<pre><code>ex) $(addprefix src/, foo bar) =&gt; 'src/foo src/bar'
+</code></pre>
+<p>$([MACRO_NAME] : [OLD] = [NEW]) : 매크로 치환, OLD 가 NEW로 치환</p>
+<pre><code>ex) $(SRCS : .c = .o) -&gt; SRCS목록의 .c를 .o로 치환
+</code></pre>
+<h3 id="참고"><strong>[참고]</strong></h3>
 <p><a href="http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html">http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html</a></p>
 <p><a href="http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html">http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html</a></p>
 <p><a href="https://bowbowbow.tistory.com/12">https://bowbowbow.tistory.com/12</a></p>
