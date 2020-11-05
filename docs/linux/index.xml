@@ -4,6 +4,7 @@
     <link>/docs/linux/</link>
     <description>Recent content in Linux on Jaeeun Lee</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Nov 2020 22:25:46 +0900</lastBuildDate>
     
 	  <atom:link href="/docs/linux/index.xml" rel="self" type="application/rss+xml" />
     
@@ -12,6 +13,43 @@
         
       
     
+    
+    <item>
+      <title>Docs: Makefile</title>
+      <link>/docs/linux/makefile/</link>
+      <pubDate>Thu, 05 Nov 2020 22:25:46 +0900</pubDate>
+      
+      <guid>/docs/linux/makefile/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;strong&gt;[정의]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;linux상에서 반복 적으로 발생하는 컴파일을 쉽게하기위해서 사용하는 make 프로그램의 설정 파일&lt;/p&gt;
+&lt;p&gt;Makefile을 통하여 library 및 컴파일 환경을 관리 가능&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;프로젝트 실행파일 생성 방법 : C source를 컴파일 하여 object 파일을 만들고 object 몇 개를 묶어서 링크(Link)과정을 거쳐 만들어짐.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;[기본구조]&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&amp;lt;Target&amp;gt; : &amp;lt;Depend&amp;gt; ?... &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &amp;lt;Command&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+		&amp;lt;TAB&amp;gt;  &amp;lt;Command&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)&lt;/p&gt;
+&lt;p&gt;Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)&lt;/p&gt;
+&lt;p&gt;Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[변수]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CC : 컴파일러&lt;/p&gt;
+&lt;p&gt;CFLAGS : 컴파일 옵션&lt;/p&gt;
+&lt;p&gt;OBJS : 중간산물 / object 파일 목록&lt;/p&gt;
+&lt;p&gt;TARGET : 빌드 대상(실행파일) 이름&lt;/p&gt;
+&lt;p&gt;LDFLAGS : 링커 옵션&lt;/p&gt;
+&lt;p&gt;LDLIBS : 링크 라이브러리&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[자동 변수]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$@ : 현재 target 이름&lt;/p&gt;
+&lt;p&gt;$^ :  현재 target이 의존하는 대상들의 전체목록&lt;/p&gt;
+&lt;p&gt;$? : 현재 target이 의존하는 대상들 중 변경된 것들의 목록&lt;/p&gt;
+&lt;p&gt;$&amp;lt; : 현재의 target보다 더 최근에 갱신된 파일 이름 ($?와 비슷함)&lt;/p&gt;
+&lt;p&gt;$% : 대상의 이름(현재 규칙 대상이 아카이브인 경우)&lt;/p&gt;
+
+      </description>
+    </item>
     
   </channel>
 </rss>
