@@ -47,6 +47,11 @@
 &lt;p&gt;$? : 현재 target이 의존하는 대상들 중 변경된 것들의 목록&lt;/p&gt;
 &lt;p&gt;$&amp;lt; : 현재의 target보다 더 최근에 갱신된 파일 이름 ($?와 비슷함)&lt;/p&gt;
 &lt;p&gt;$% : 대상의 이름(현재 규칙 대상이 아카이브인 경우)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[참고]&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html&#34;&gt;http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html&#34;&gt;http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bowbowbow.tistory.com/12&#34;&gt;https://bowbowbow.tistory.com/12&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://doitnow-man.tistory.com/100&#34;&gt;https://doitnow-man.tistory.com/100&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
