@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="/docs/linux/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,16 +20,36 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Linux | Jaeeun Lee</title><meta property="og:title" content="Linux" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/linux/" />
-<meta property="og:updated_time" content="2020-11-06T00:00:00+00:00" /><meta property="og:site_name" content="Jaeeun Lee" />
-<meta itemprop="name" content="Linux">
-<meta itemprop="description" content="">
+<title>외부 라이브러리를 사용하여 gcc로 컴파일하는 방법 | Jaeeun Lee</title><meta property="og:title" content="외부 라이브러리를 사용하여 gcc로 컴파일하는 방법" />
+<meta property="og:description" content="gcc -L[디렉토리명] -l[파일명] *.c -L
+ 외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.
+-l
+ 링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)
+ ex) -lftprintf &gt; libftprintf.a파일을 사용." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/linux/linkinglib/" />
+<meta property="article:published_time" content="2020-11-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-11-06T00:00:00+00:00" /><meta property="og:site_name" content="Jaeeun Lee" />
+<meta itemprop="name" content="외부 라이브러리를 사용하여 gcc로 컴파일하는 방법">
+<meta itemprop="description" content="gcc -L[디렉토리명] -l[파일명] *.c -L
+ 외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.
+-l
+ 링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)
+ ex) -lftprintf &gt; libftprintf.a파일을 사용.">
+<meta itemprop="datePublished" content="2020-11-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-11-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="44">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="외부 라이브러리를 사용하여 gcc로 컴파일하는 방법"/>
+<meta name="twitter:description" content="gcc -L[디렉토리명] -l[파일명] *.c -L
+ 외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.
+-l
+ 링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)
+ ex) -lftprintf &gt; libftprintf.a파일을 사용."/>
 
 
 
@@ -54,7 +73,7 @@
 
 
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -202,7 +221,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docslinuxlinkinglib" href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docslinuxlinkinglib" href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
       
       
     </li>
@@ -242,9 +261,9 @@
 
 
 
-<a href="https://github.com/jaeeunLee-dev/blog/edit/master/content/ko/Docs/Linux/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> 페이지 편집</a>
-<a href="https://github.com/jaeeunLee-dev/blog/new/master/content/ko/Docs/Linux/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-<a href="https://github.com/jaeeunLee-dev/blog/issues/new?title=Linux" target="_blank"><i class="fab fa-github fa-fw"></i> 문서에 이슈 생성</a>
+<a href="https://github.com/jaeeunLee-dev/blog/edit/master/content/ko/Docs/Linux/LinkingLib.md" target="_blank"><i class="fa fa-edit fa-fw"></i> 페이지 편집</a>
+<a href="https://github.com/jaeeunLee-dev/blog/new/master/content/ko/Docs/Linux/LinkingLib.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+<a href="https://github.com/jaeeunLee-dev/blog/issues/new?title=%ec%99%b8%eb%b6%80%20%eb%9d%bc%ec%9d%b4%eb%b8%8c%eb%9f%ac%eb%a6%ac%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac%20gcc%eb%a1%9c%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%ed%95%98%eb%8a%94%20%eb%b0%a9%eb%b2%95" target="_blank"><i class="fab fa-github fa-fw"></i> 문서에 이슈 생성</a>
 
 
 <a href="https://github.com/jaeeunLee-dev/blog/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> 프로젝트에 이슈 생성</a>
@@ -273,6 +292,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="/docs/">Docs</a>
 </li>
@@ -280,8 +302,15 @@
 
 
 
-<li class="breadcrumb-item active" aria-current="page">
+<li class="breadcrumb-item" >
 	<a href="/docs/linux/">Linux</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
 </li>
 
 	</ol>
@@ -289,56 +318,22 @@
 
             
 <div class="td-content">
-	<h1>Linux</h1>
-        
-	
-	
-        <div class="section-index">
+	<h1>외부 라이브러리를 사용하여 gcc로 컴파일하는 방법</h1>
     
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/linux/%EC%A0%95%EC%A0%81%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/">정적라이브러리를 만드는 방법</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/linux/makefile/">Makefile</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/linux/linkinglib/">외부 라이브러리를 사용하여 gcc로 컴파일하는 방법</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-    
-</div>
+	       
+	<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc -L<span style="color:#f92672">[</span>디렉토리명<span style="color:#f92672">]</span> -l<span style="color:#f92672">[</span>파일명<span style="color:#f92672">]</span> *.c
+</code></pre></div><p><code>-L</code></p>
+<p>    외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.</p>
+<p><code>-l</code></p>
+<p>    링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)</p>
+<p>     ex) -lftprintf &gt; libftprintf.a파일을 사용.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">최종 수정 2020.11.06
 </div>
 </div>
+
 
           </main>
         </div>

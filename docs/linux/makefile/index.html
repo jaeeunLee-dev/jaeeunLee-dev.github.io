@@ -26,7 +26,7 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
 [기본구조] &lt;Target&gt; : &lt;Depend&gt; ?... [ [;] &lt;Command&gt; ] &lt;TAB&gt; &lt;Command&gt; Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)
 Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)
 Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
-[변수] CC : 컴파일러" />
+[옵션] -C [디렉토리경로] : Makefile을 계속 읽지 말고 우선 디렉토리 경로로 이동하라는 것." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/linux/makefile/" />
 <meta property="article:published_time" content="2020-11-05T22:25:46+09:00" />
@@ -37,10 +37,10 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
 [기본구조] &lt;Target&gt; : &lt;Depend&gt; ?... [ [;] &lt;Command&gt; ] &lt;TAB&gt; &lt;Command&gt; Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)
 Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)
 Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
-[변수] CC : 컴파일러">
+[옵션] -C [디렉토리경로] : Makefile을 계속 읽지 말고 우선 디렉토리 경로로 이동하라는 것.">
 <meta itemprop="datePublished" content="2020-11-05T22:25:46+09:00" />
 <meta itemprop="dateModified" content="2020-11-05T22:25:46+09:00" />
-<meta itemprop="wordCount" content="197">
+<meta itemprop="wordCount" content="233">
 
 
 
@@ -52,7 +52,7 @@ Makefile을 통하여 library 및 컴파일 환경을 관리 가능
 [기본구조] &lt;Target&gt; : &lt;Depend&gt; ?... [ [;] &lt;Command&gt; ] &lt;TAB&gt; &lt;Command&gt; Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)
 Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)
 Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
-[변수] CC : 컴파일러"/>
+[옵션] -C [디렉토리경로] : Makefile을 계속 읽지 말고 우선 디렉토리 경로로 이동하라는 것."/>
 
 
 
@@ -132,7 +132,7 @@ Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
   aria-label="사이트에서 검색…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.31443a5118c58124861716ed8cd769e7.json"
+  data-offline-search-index-json-src="/offline-search-index.643a4658863bd8dc441b5834396b7761.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
   aria-label="사이트에서 검색…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.31443a5118c58124861716ed8cd769e7.json"
+  data-offline-search-index-json-src="/offline-search-index.643a4658863bd8dc441b5834396b7761.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -219,6 +219,12 @@ Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
       
       
       <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docslinuxmakefile" href="/docs/linux/makefile/">Makefile</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docslinuxlinkinglib" href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
       
       
     </li>
@@ -278,9 +284,11 @@ Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
       <ul>
         <li><a href="#정의"><strong>[정의]</strong></a></li>
         <li><a href="#기본구조"><strong>[기본구조]</strong></a></li>
+        <li><a href="#옵션"><strong>[옵션]</strong></a></li>
         <li><a href="#변수"><strong>[변수]</strong></a></li>
         <li><a href="#자동-변수"><strong>[자동 변수]</strong></a></li>
         <li><a href="#문법"><strong>[문법]</strong></a></li>
+        <li><a href="#포니-타겟"><strong>[포니 타겟]</strong></a></li>
         <li><a href="#참고"><strong>[참고]</strong></a></li>
       </ul>
     </li>
@@ -342,6 +350,8 @@ Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
 </code></pre></div><p>Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)</p>
 <p>Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)</p>
 <p>Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)</p>
+<h3 id="옵션"><strong>[옵션]</strong></h3>
+<p>-C [디렉토리경로] : Makefile을 계속 읽지 말고 우선 디렉토리 경로로 이동하라는 것.</p>
 <h3 id="변수"><strong>[변수]</strong></h3>
 <p>CC : 컴파일러</p>
 <p>CFLAGS : 컴파일 옵션</p>
@@ -356,12 +366,15 @@ Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)
 <p>$&lt; : 현재의 target보다 더 최근에 갱신된 파일 이름 ($?와 비슷함)</p>
 <p>$% : 대상의 이름(현재 규칙 대상이 아카이브인 경우)</p>
 <h3 id="문법"><strong>[문법]</strong></h3>
-<p>$(addprefix [prefix], [names]&hellip;) : prefix의 값은 각 개별 이름의 앞에 붙고, 그들 사이에 단일 스페이스로 채워 연결된 커다란 이름을 만듦</p>
+<p><code>$(addprefix [prefix], [names]...)</code> : prefix의 값은 각 개별 이름의 앞에 붙고, 그들 사이에 단일 스페이스로 채워 연결된 커다란 이름을 만듦</p>
 <pre><code>ex) $(addprefix src/, foo bar) =&gt; 'src/foo src/bar'
 </code></pre>
-<p>$([MACRO_NAME] : [OLD] = [NEW]) : 매크로 치환, OLD 가 NEW로 치환</p>
+<p><code>$([MACRO_NAME] : [OLD] = [NEW])</code> : 매크로 치환, OLD 가 NEW로 치환</p>
 <pre><code>ex) $(SRCS : .c = .o) -&gt; SRCS목록의 .c를 .o로 치환
 </code></pre>
+<p>@(recipe echoing) : 명령어의 출력이 되지 않음.</p>
+<h3 id="포니-타겟"><strong>[포니 타겟]</strong></h3>
+<p><code>.PHONY: [target]</code> : 이름이 같은 파일과의 충돌을 피하기 위함. target이 파일이름을 나타내지 않음을 의미.</p>
 <h3 id="참고"><strong>[참고]</strong></h3>
 <p><a href="http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html">http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html</a></p>
 <p><a href="http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html">http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html</a></p>

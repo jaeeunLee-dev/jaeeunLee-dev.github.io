@@ -4,7 +4,7 @@
     <link>/docs/linux/</link>
     <description>Recent content in Linux on Jaeeun Lee</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Nov 2020 22:25:46 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	  <atom:link href="/docs/linux/index.xml" rel="self" type="application/rss+xml" />
     
@@ -53,6 +53,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Target(대상) : 빌드 대상 이름 (생성하고자 하는 목적물 / 명령에 의해 생성되는 결과파일 / 오브젝트 파일이나 실행파일)&lt;/p&gt;
 &lt;p&gt;Depend(의존관계) : Target을 만들 때 의존되는 파일 (Target을 만들기 위해서 필요한 요소 기술)&lt;/p&gt;
 &lt;p&gt;Command(명령) : 빌드 대상을 생성하는 명령 (일반 Shell 명령)&lt;/p&gt;
+&lt;h3 id=&#34;옵션&#34;&gt;&lt;strong&gt;[옵션]&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;-C [디렉토리경로] : Makefile을 계속 읽지 말고 우선 디렉토리 경로로 이동하라는 것.&lt;/p&gt;
 &lt;h3 id=&#34;변수&#34;&gt;&lt;strong&gt;[변수]&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;CC : 컴파일러&lt;/p&gt;
 &lt;p&gt;CFLAGS : 컴파일 옵션&lt;/p&gt;
@@ -67,17 +69,39 @@
 &lt;p&gt;$&amp;lt; : 현재의 target보다 더 최근에 갱신된 파일 이름 ($?와 비슷함)&lt;/p&gt;
 &lt;p&gt;$% : 대상의 이름(현재 규칙 대상이 아카이브인 경우)&lt;/p&gt;
 &lt;h3 id=&#34;문법&#34;&gt;&lt;strong&gt;[문법]&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;$(addprefix [prefix], [names]&amp;hellip;) : prefix의 값은 각 개별 이름의 앞에 붙고, 그들 사이에 단일 스페이스로 채워 연결된 커다란 이름을 만듦&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$(addprefix [prefix], [names]...)&lt;/code&gt; : prefix의 값은 각 개별 이름의 앞에 붙고, 그들 사이에 단일 스페이스로 채워 연결된 커다란 이름을 만듦&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ex) $(addprefix src/, foo bar) =&amp;gt; &#39;src/foo src/bar&#39;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;$([MACRO_NAME] : [OLD] = [NEW]) : 매크로 치환, OLD 가 NEW로 치환&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$([MACRO_NAME] : [OLD] = [NEW])&lt;/code&gt; : 매크로 치환, OLD 가 NEW로 치환&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ex) $(SRCS : .c = .o) -&amp;gt; SRCS목록의 .c를 .o로 치환
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;@(recipe echoing) : 명령어의 출력이 되지 않음.&lt;/p&gt;
+&lt;h3 id=&#34;포니-타겟&#34;&gt;&lt;strong&gt;[포니 타겟]&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;.PHONY: [target]&lt;/code&gt; : 이름이 같은 파일과의 충돌을 피하기 위함. target이 파일이름을 나타내지 않음을 의미.&lt;/p&gt;
 &lt;h3 id=&#34;참고&#34;&gt;&lt;strong&gt;[참고]&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html&#34;&gt;http://doc.kldp.org/KoreanDoc/html/GNU-Make/GNU-Make-3.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html&#34;&gt;http://korea.gnu.org/manual/4check/make-3.77/ko/make_8.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://bowbowbow.tistory.com/12&#34;&gt;https://bowbowbow.tistory.com/12&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://doitnow-man.tistory.com/100&#34;&gt;https://doitnow-man.tistory.com/100&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 외부 라이브러리를 사용하여 gcc로 컴파일하는 방법</title>
+      <link>/docs/linux/linkinglib/</link>
+      <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/linux/linkinglib/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gcc -L&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;디렉토리명&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; -l&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;파일명&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; *.c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;-L&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;    외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;    링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)&lt;/p&gt;
+&lt;p&gt;     ex) -lftprintf &amp;gt; libftprintf.a파일을 사용.&lt;/p&gt;
 
       </description>
     </item>
