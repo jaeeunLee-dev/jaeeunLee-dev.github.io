@@ -20,42 +20,39 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>외부 라이브러리를 사용하여 gcc로 컴파일하는 방법 | Jaeeun Lee</title><meta property="og:title" content="외부 라이브러리를 사용하여 gcc로 컴파일하는 방법" />
-<meta property="og:description" content="gcc -L[디렉토리명] -l[파일명] *.c -L
- 외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.
--l
- 링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)
- ex) -lftprintf &gt; libftprintf.a파일을 사용.
-[참고] https://ohseyong.github.io/study/learn-with-printf/
-https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기" />
+<title>가변인자(variadic arguments) | Jaeeun Lee</title><meta property="og:title" content="가변인자(variadic arguments)" />
+<meta property="og:description" content="[정의]
+인수의 개수와 타입이 미리 정해져 있지 않다는 뜻.
+변수의 개수가 그때그때 변할 수 있는 인자.
+[주의사항]
+가변인수 함수는 반드시 하나 이상의 고정인수 필요. → ap를 초기화 하기 위해서 마지막 고정인수의 번지를 알아야 하기 때문
+함수 내부에서 자신에게 전달된 가변 인수의 개수를 알 수 있도록 해야함. → 전달 될 수 있는 인수 의 개수는 제한 없음. 컴파일러는 인수 개수를 점검하지 않음. 그래서 개수를 알려주지 않으면 함수 내부에서 인수의 개수를 알 방법이 없음." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/linux/linkinglib/" />
+<meta property="og:url" content="/docs/c/variadicarguments/" />
 <meta property="article:published_time" content="2020-11-06T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-11-06T00:00:00+00:00" /><meta property="og:site_name" content="Jaeeun Lee" />
-<meta itemprop="name" content="외부 라이브러리를 사용하여 gcc로 컴파일하는 방법">
-<meta itemprop="description" content="gcc -L[디렉토리명] -l[파일명] *.c -L
- 외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.
--l
- 링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)
- ex) -lftprintf &gt; libftprintf.a파일을 사용.
-[참고] https://ohseyong.github.io/study/learn-with-printf/
-https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기">
+<meta itemprop="name" content="가변인자(variadic arguments)">
+<meta itemprop="description" content="[정의]
+인수의 개수와 타입이 미리 정해져 있지 않다는 뜻.
+변수의 개수가 그때그때 변할 수 있는 인자.
+[주의사항]
+가변인수 함수는 반드시 하나 이상의 고정인수 필요. → ap를 초기화 하기 위해서 마지막 고정인수의 번지를 알아야 하기 때문
+함수 내부에서 자신에게 전달된 가변 인수의 개수를 알 수 있도록 해야함. → 전달 될 수 있는 인수 의 개수는 제한 없음. 컴파일러는 인수 개수를 점검하지 않음. 그래서 개수를 알려주지 않으면 함수 내부에서 인수의 개수를 알 방법이 없음.">
 <meta itemprop="datePublished" content="2020-11-06T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-11-06T00:00:00+00:00" />
-<meta itemprop="wordCount" content="47">
+<meta itemprop="wordCount" content="285">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="외부 라이브러리를 사용하여 gcc로 컴파일하는 방법"/>
-<meta name="twitter:description" content="gcc -L[디렉토리명] -l[파일명] *.c -L
- 외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.
--l
- 링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)
- ex) -lftprintf &gt; libftprintf.a파일을 사용.
-[참고] https://ohseyong.github.io/study/learn-with-printf/
-https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
+<meta name="twitter:title" content="가변인자(variadic arguments)"/>
+<meta name="twitter:description" content="[정의]
+인수의 개수와 타입이 미리 정해져 있지 않다는 뜻.
+변수의 개수가 그때그때 변할 수 있는 인자.
+[주의사항]
+가변인수 함수는 반드시 하나 이상의 고정인수 필요. → ap를 초기화 하기 위해서 마지막 고정인수의 번지를 알아야 하기 때문
+함수 내부에서 자신에게 전달된 가변 인수의 개수를 알 수 있도록 해야함. → 전달 될 수 있는 인수 의 개수는 제한 없음. 컴파일러는 인수 개수를 점검하지 않음. 그래서 개수를 알려주지 않으면 함수 내부에서 인수의 개수를 알 방법이 없음."/>
 
 
 
@@ -205,10 +202,10 @@ https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/linux/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Linux</a>
+    <a  href="/docs/linux/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Linux</a>
   </li>
   <ul>
-    <li class="collapse show" id="docslinux">
+    <li class="collapse " id="docslinux">
       
       
       
@@ -227,7 +224,7 @@ https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docslinuxlinkinglib" href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docslinuxlinkinglib" href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
       
       
     </li>
@@ -246,17 +243,17 @@ https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/c/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">C</a>
+    <a  href="/docs/c/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">C</a>
   </li>
   <ul>
-    <li class="collapse " id="docsc">
+    <li class="collapse show" id="docsc">
       
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscvariadicarguments" href="/docs/c/variadicarguments/">가변인자</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docscvariadicarguments" href="/docs/c/variadicarguments/">가변인자</a>
       
       
     </li>
@@ -296,9 +293,9 @@ https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
 
 
 
-<a href="https://github.com/jaeeunLee-dev/blog/edit/master/content/ko/Docs/Linux/LinkingLib.md" target="_blank"><i class="fa fa-edit fa-fw"></i> 페이지 편집</a>
-<a href="https://github.com/jaeeunLee-dev/blog/new/master/content/ko/Docs/Linux/LinkingLib.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-<a href="https://github.com/jaeeunLee-dev/blog/issues/new?title=%ec%99%b8%eb%b6%80%20%eb%9d%bc%ec%9d%b4%eb%b8%8c%eb%9f%ac%eb%a6%ac%eb%a5%bc%20%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac%20gcc%eb%a1%9c%20%ec%bb%b4%ed%8c%8c%ec%9d%bc%ed%95%98%eb%8a%94%20%eb%b0%a9%eb%b2%95" target="_blank"><i class="fab fa-github fa-fw"></i> 문서에 이슈 생성</a>
+<a href="https://github.com/jaeeunLee-dev/blog/edit/master/content/ko/Docs/C/variadicArguments.md" target="_blank"><i class="fa fa-edit fa-fw"></i> 페이지 편집</a>
+<a href="https://github.com/jaeeunLee-dev/blog/new/master/content/ko/Docs/C/variadicArguments.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+<a href="https://github.com/jaeeunLee-dev/blog/issues/new?title=%ea%b0%80%eb%b3%80%ec%9d%b8%ec%9e%90%28variadic%20arguments%29" target="_blank"><i class="fab fa-github fa-fw"></i> 문서에 이슈 생성</a>
 
 
 <a href="https://github.com/jaeeunLee-dev/blog/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> 프로젝트에 이슈 생성</a>
@@ -338,14 +335,14 @@ https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
 
 
 <li class="breadcrumb-item" >
-	<a href="/docs/linux/">Linux</a>
+	<a href="/docs/c/">C</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/linux/linkinglib/">외부 라이브러리 컴파일하기</a>
+	<a href="/docs/c/variadicarguments/">가변인자</a>
 </li>
 
 	</ol>
@@ -353,18 +350,52 @@ https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기"/>
 
             
 <div class="td-content">
-	<h1>외부 라이브러리를 사용하여 gcc로 컴파일하는 방법</h1>
+	<h1>가변인자(variadic arguments)</h1>
     
 	       
-	<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc -L<span style="color:#f92672">[</span>디렉토리명<span style="color:#f92672">]</span> -l<span style="color:#f92672">[</span>파일명<span style="color:#f92672">]</span> *.c
-</code></pre></div><p><code>-L</code></p>
-<p>    외부 라이브러리를 사용한다는 의미. 라이브러리의 위치를 정해주는 옵션.</p>
-<p><code>-l</code></p>
-<p>    링크할 라이브러리를 명시하는 옵션. 정적 라이브러리를 링크시키는데 사용되며 대상 라이브러리 파일 이름앞에서 lib과 .a를 제외하고 인식. (POSIX시스템에서 라이브러리 파일명 앞에 lib을 붙이기로한 일종의 약속 떄문)</p>
-<p>     ex) -lftprintf &gt; libftprintf.a파일을 사용.</p>
-<h3 id="참고"><strong>[참고]</strong></h3>
-<p><a href="https://ohseyong.github.io/study/learn-with-printf/">https://ohseyong.github.io/study/learn-with-printf/</a></p>
-<p><a href="https://velog.io/@hidaehyunlee/%EC%99%B8%EB%B6%80-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-GCC%EB%A1%9C-%EC%BB%B4%ED%8C%8C%EC%9D%BC-%ED%95%98%EA%B8%B0">https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기</a></p>
+	<p><strong>[정의]</strong></p>
+<p>인수의 개수와 타입이 미리 정해져 있지 않다는 뜻.</p>
+<p>변수의 개수가 그때그때 변할 수 있는 인자.</p>
+<p><strong>[주의사항]</strong></p>
+<p>가변인수 함수는 반드시 하나 이상의 고정인수 필요. → ap를 초기화 하기 위해서 마지막 고정인수의 번지를 알아야 하기 때문</p>
+<p>함수 내부에서 자신에게 전달된 가변 인수의 개수를 알 수 있도록 해야함. → 전달 될 수 있는 인수 의 개수는 제한 없음. 컴파일러는 인수 개수를 점검하지 않음. 그래서 개수를 알려주지 않으면 함수 내부에서 인수의 개수를 알 방법이 없음. 호출측이 정보를 제공해야함.</p>
+<p>함수 내부에서 각각의 가변인수 타입을 알 수 있어야 함. → va_arg의 사용을 위함.</p>
+<p><strong>[기본구조]</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdarg.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">varFunc</span>( <span style="color:#66d9ef">int</span> fix, ... )
+{
+    va_list ap; <span style="color:#75715e">/* 현재 읽고 있는 번지를 기억하기 위한 변수 */</span>
+    va_start( ap, fix ); <span style="color:#75715e">/* 가변인수를 읽기 위한 준비 */</span>
+    <span style="color:#66d9ef">while</span>( <span style="color:#75715e">/* 모든 인수를 읽을 때 까지 */</span> )
+    {
+        va_arg( ap, <span style="color:#75715e">/* 인수타입 */</span> ) ; <span style="color:#75715e">/* 가변인수 읽기 */</span>
+    }
+    va_end(ap); <span style="color:#75715e">/* 뒷정리 */</span>
+}
+</code></pre></div><p><strong>va_list ap;</strong></p>
+<pre><code>함수로 전달되는 인수들은 스택(stack)에 저장되며 함수는 스택에서 인수를 꺼내씀. 스택에 있는 인수를 읽을 때 포인터 연산을 해야하는데 현재 읽고 있는 번지를 기억하기 위해 va_list형 포인터 변수를 사용.
+va_list타입은 char *형으로 정의되어있음. 스택의 인수를 가리키는 포인터 타입.
+</code></pre>
+<p><strong>va_start(ap, 마지막 고정인수)</strong></p>
+<pre><code>ap 포인터 변수가 첫 번째 가변인수를 가리키도록 초기화하는 함수.
+두번째 인자는 가변인수의 시작 변수를 찾기 위한 역할. (그 다음 번지가 가변인수의 시작번지)
+→ va_start 내부에서 ap가 마지막 고정 인수 다음 번지를 가리키도록 함.
+</code></pre>
+<p><strong>va_arg(ap, 인수타입)</strong></p>
+<pre><code>가변인수를 읽는 함수.
+ap가 가리키는 번지의 데이터를 가변인수로 읽음.
+두번 째 인수는 가변인수의 데이터형을 나타냄. (❗char, float는 사용 불가능)
+ex) ap위치에 있는 정수값을 읽고 싶을 때 : va_arg(ap, int)
+    ap위치에 있는 실수 값을 읽고 싶을 떄 : va_arg(ap, double)
+</code></pre>
+<p><strong>va_end(ap)</strong></p>
+<pre><code>가변인수를 읽은 후 함수가 정상적으로 리턴되도록 도와줌.
+va_end가 호출되면 ap가 변경되므로 va_start를 호출하지 않고는 가변인수를 다시 읽을 수 없도록 함.
+</code></pre>
+<p><strong>[참고]</strong></p>
+<p><a href="https://aossuper8.tistory.com/17">https://aossuper8.tistory.com/17</a></p>
+<p><a href="https://blankspace-dev.tistory.com/235">https://blankspace-dev.tistory.com/235</a></p>
 
 	
 	

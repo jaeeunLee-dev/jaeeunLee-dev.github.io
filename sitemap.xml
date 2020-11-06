@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/docs/c/variadicarguments/</loc>
+    <lastmod>2020-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/linux/</loc>
     <lastmod>2020-11-06T00:00:00+00:00</lastmod>
   </url>
@@ -10,6 +15,11 @@
   <url>
     <loc>/docs/linux/%EC%A0%95%EC%A0%81%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/</loc>
     <lastmod>2020-11-05T22:25:46+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/c/</loc>
+    <lastmod>2020-11-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
